@@ -1,0 +1,16 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install Docker
+      amazon.aws.package:
+         name: docker
+         state: present
+    - name: Start Docker
+      service:
+        name: docker
+        state: started
+        enabled: true
+    - name: Pull Docker Image
+      command: docker pull jagadeesh7893/nodejs-app:{{ lookup('env', 'BUILD_NUMBER') }}
+    - name: Run Docker Container
+      command: docker run -d -p 80:3000 jagadeesh7893/nodejs-app:{{ lookup('env', 'BUILD_NUMBER') }}
