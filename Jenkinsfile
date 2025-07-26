@@ -46,3 +46,4 @@ docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
       }
     }
   }
+}
