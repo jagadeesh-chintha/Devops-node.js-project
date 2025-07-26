@@ -30,17 +30,17 @@ docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
         }
       }
     }
-    stage('Provision AWS EC2 (Terrafrom)'){
+    stage('Provision AWS EC2 (Terrafrom)') {
+      steps {
       dir('terraform') {
-        steps {
           sh 'terraform init'
           sh 'terraform apply-auto-approve'
         }
       }
     }
     stage('Deploy app (Ansible)') {
+      steps {
       dir('ansible') {
-        steps {
           sh 'ansible-playbook -i hosts playbook.yml'
         }
       }
