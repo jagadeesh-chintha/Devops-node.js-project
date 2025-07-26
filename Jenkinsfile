@@ -34,7 +34,7 @@ docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
       steps {
       dir('terraform') {
           sh 'terraform init'
-          sh 'terraform apply auto-approve'
+          sh 'terraform apply -auto-approve'
         }
       }
     }
