@@ -10,7 +10,7 @@ resource "aws_instance" "web" {
     Name = "Devops-NodeAPP"
   }
 
-  provisioner = "local-exce" {
+  provisioner "local-exec" {
     command = "echo ${self.public_ip} > ../ansible/hosts"
   }
 }
